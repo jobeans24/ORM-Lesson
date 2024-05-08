@@ -2,24 +2,30 @@ const router = require('express').Router();
 const Book = require('../../models/Book');
 
 // TODO: Add a comment describing the purpose of this route
+// the purpose of this route is to get all the books in the database
 router.get('/', (req, res) => {
   // TODO: Add a comment describing the functionality of this method
+  // the functionality of this method is to find all the books in the database
   Book.findAll().then((bookData) => {
     res.json(bookData);
   });
 });
 
 // TODO: Add a comment describing the purpose of this route
+// the purpose of this route is to get all the books in the database that are paperbacks
 router.get('/paperbacks', (req, res) => {
   Book.findAll({
     // TODO: Add a comment describing the functionality of this property
+    // the functionality of this property is to order the books by title
     order: ['title'],
     // TODO: Add a comment describing the functionality of this property
+    // the functionality of this property is to filter the books that are paperbacks
     where: {
       is_paperback: true
     },
     attributes: {
       // TODO: Add a comment describing the functionality of this property
+      // the functionality of this property is to exclude the is_paperback and edition columns
       exclude: ['is_paperback', 'edition']
     }
   }).then((bookData) => {
@@ -28,8 +34,10 @@ router.get('/paperbacks', (req, res) => {
 });
 
 // TODO: Add a comment describing the purpose of this route
+// the purpose of this route is to get a specific book by its id
 router.get('/:id', (req, res) => {
   // TODO: Add a comment describing the functionality of this method
+  // the functionality of this method is to find a book by its id
   Book.findByPk(req.params.id).then((bookData) => {
     res.json(bookData);
   });
