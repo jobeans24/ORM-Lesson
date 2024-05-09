@@ -4,6 +4,7 @@ const Book = require('../../models/Book');
 // TODO: Add a comment describing the purpose of this route
 // the purpose of this route is to get all the books in the database
 router.get('/', (req, res) => {
+  // SQL equivalent: SELECT * FROM books;
   // TODO: Add a comment describing the functionality of this method
   // the functionality of this method is to find all the books in the database
   Book.findAll().then((bookData) => {
@@ -36,6 +37,7 @@ router.get('/paperbacks', (req, res) => {
 // TODO: Add a comment describing the purpose of this route
 // the purpose of this route is to get a specific book by its id
 router.get('/:id', (req, res) => {
+  // SQL equivalent: SELECT * FROM books WHERE book_id = req.params.id;
   // TODO: Add a comment describing the functionality of this method
   // the functionality of this method is to find a book by its id
   Book.findByPk(req.params.id).then((bookData) => {
